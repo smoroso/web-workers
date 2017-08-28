@@ -1,13 +1,15 @@
 "use strict";
 
-const asyncFn = () => {
+const asyncFn = async () => {
+  console.time("asyncFn");
   const promises = [];
   for(let i = 0; i < 100000; i++){
     promises.push(Promise.resolve(i));
   }
-  return Promise.all(promises).then((results) => {
-    return results.reduce((sum, value) => {
-      return sum + value;
-    }, 0);
-  });
+  const resultArray = await Promise.all(promises);
+  const result = resultArray.reduce((sum, value) => {
+    return sum + value;
+  }, 0);
+  console.timeEnd("asyncFn");
+  return result;
 };

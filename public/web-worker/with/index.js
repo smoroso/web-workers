@@ -3,7 +3,7 @@
 ((window, document) => {
   let workerInstance;
 
-  const startWorker = () => {
+  const startWorker = async () => {
     if(typeof(Worker) !== "undefined") {
       if(typeof(workerInstance) == "undefined") {
         workerInstance = new Worker("/web-worker/with/web-worker.js");
@@ -13,9 +13,8 @@
         };
       }
     } else {
-      return asyncFn().then((result) => {
-        console.log(result);
-      });
+      const result = await asyncFn();
+      console.log(result);
     }
   };
 
