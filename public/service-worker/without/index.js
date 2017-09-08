@@ -44,29 +44,45 @@
   ////////////////////
 
   const getImages = async (pageNumber) => {
-    pageNumberEl.innerHtml = pageNumber;
-    emptyEl(displayResultEl);
-    toggleEl(timeContainer);
-    toggleEl(loadingSpinnerContainer);
-    const start = window.performance.now();
-    const imagesUrlArray = [...Array(totalImages).keys()].map((i) => {
-      const id = (totalImages*(pageNumber-1))+i+1;
-      return imageBaseUrl+id;
-    });
-    const promises = imagesUrlArray.map(fetchImage);
-    const objectsUrlArray = await Promise.all(promises);
-    const end = window.performance.now();
-    const time = (end - start).toFixed(2);
-    setInEl(timeEl, time);
-    toggleEl(timeContainer);
-    toggleEl(loadingSpinnerContainer);
-    objectsUrlArray.forEach(renderImage);
+    try {
+      pageNumberEl.innerHtml = pageNumber;
+      emptyEl(displayResultEl);
+      toggleEl(timeContainer);
+      toggleEl(loadingSpinnerContainer);
+      const start = window.performance.now();
+      const imagesUrlArray = [...Array(totalImages).keys()].map((i) => {
+        const id = (totalImages*(pageNumber-1))+i+1;
+        return imageBaseUrl+id;
+      });
+      const promises = imagesUrlArray.map(fetchImage);
+      const objectsUrlArray = await Promise.all(promises);
+      const objectsUrlToDisplay = objectsUrlArray.filter(url => url);
+      const end = window.performance.now();
+      const time = (end - start).toFixed(2);
+      setInEl(timeEl, time);
+      toggleEl(timeContainer);
+      toggleEl(loadingSpinnerContainer);
+
+      if(objectsUrlToDisplay.length === 0){
+        setInEl(displayResultEl, "No Images to Display");
+        return null;
+      }
+
+      objectsUrlToDisplay.forEach(renderImage);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   const fetchImage = async (url) => {
-    const response = await fetch(url);
-    const myBlob = await response.blob();
-    return URL.createObjectURL(myBlob);
+    try {
+      const response = await fetch(url);
+      const myBlob = await response.blob();
+      return URL.createObjectURL(myBlob);
+    } catch (e) {
+      console.log(e);
+      return null;
+    }
   };
 
   const renderImage = (objectURL) => {
