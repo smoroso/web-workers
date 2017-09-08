@@ -3,7 +3,7 @@
 const asyncFn = async () => {
   console.time("asyncFn");
   const promises = [];
-  for(let i = 0; i < 100000; i++){
+  for(let i = 0; i < 500000; i++){
     promises.push(Promise.resolve(i));
   }
   const resultArray = await Promise.all(promises);

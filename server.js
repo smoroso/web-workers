@@ -12,12 +12,28 @@
     res.sendFile(path.join(__dirname + "/public/index.html"));
   });
 
+  app.get("/web-worker", (req, res) => {
+    res.sendFile(path.join(__dirname + "/public/web-worker/index.html"));
+  });
+
   app.get("/without-web-worker", (req, res) => {
     res.sendFile(path.join(__dirname + "/public/web-worker/without/index.html"));
   });
 
   app.get("/with-web-worker", (req, res) => {
     res.sendFile(path.join(__dirname + "/public/web-worker/with/index.html"));
+  });
+
+  app.get("/service-worker", (req, res) => {
+    res.sendFile(path.join(__dirname + "/public/service-worker/index.html"));
+  });
+
+  app.get("/without-service-worker", (req, res) => {
+    res.sendFile(path.join(__dirname + "/public/service-worker/without/index.html"));
+  });
+
+  app.get("/with-service-worker", (req, res) => {
+    res.sendFile(path.join(__dirname + "/public/service-worker/without/index.html"));
   });
 
   const listener = app.listen(8080, () => {

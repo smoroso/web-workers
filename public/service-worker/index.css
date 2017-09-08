@@ -1,0 +1,15 @@
+#loading-spinner-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#display-result {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+img {
+  max-width: 100%;
+}

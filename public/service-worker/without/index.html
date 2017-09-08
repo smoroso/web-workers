@@ -1,0 +1,36 @@
+<link rel="stylesheet" href="/style.css"/>
+<link rel="stylesheet" href="/service-worker/index.css"/>
+
+<header>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/with-service-worker">With Service Worker</a></li>
+    <li><a href="/service-worker">Service Worker</a></li>
+  </ul>
+</header>
+
+<br/><br/><br/>
+
+<h1>Without Service Worker</h1>
+
+<button id="previous-page-btn" type="button" name="button">Previous Page</button>
+<button id="next-page-btn" type="button" name="button">Next Page</button>
+<br/><br/><br/>
+
+<div>
+  Page <span id="page-number"></span>
+</div>
+
+<div id="loading-time-container">
+  Time to load: <span id="loading-time"></span> ms
+</div>
+<br/><br/><br/>
+
+<div id="loading-spinner-container">
+  <img id="loading-spinner" src="/img/loading.gif" alt="loading..."/>
+</div>
+
+<div id="display-result"></div>
+
+<script type="text/javascript" src="/service-worker/element-library.js"></script>
+<script type="text/javascript" src="/service-worker/without/index.js"></script>
