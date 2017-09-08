@@ -1,27 +1,69 @@
-header ul {
-  list-style-type: none;
+body{
+  margin: 0;
+  font-size: 24px;
+}
+
+.navigation {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  list-style: none;
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  border: 1px solid #E7E7E7;
-  background-color: #F3F3F3;
-  position: fixed;
+  padding: 0;
+
+  background: deepskyblue;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: column wrap;
+  flex-flow: column wrap;
+  justify-content: flex-end;
 }
 
-header li {
-  float: left;
-}
-
-header li a {
-  display: block;
-  color: #666;
-  text-align: center;
-  padding: 14px 16px;
+.navigation a {
   text-decoration: none;
+  display: block;
+  text-align: center;
+  padding: 10px;
+  border-top: 1px solid rgba(255,255,255,0.3);
+  color: white;
 }
 
-header li a:hover {
-  background-color: #DDD;
+.navigation a:hover {
+  background: dodgerblue;
+}
+
+.container{
+  padding: 1%;
+}
+
+@media (min-width: 640px) and (max-width: 800px) {
+  .navigation {
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    justify-content: space-around;
+  }
+
+  .navigation a {
+    padding: 1em;
+  }
+}
+
+@media (min-width: 800px) {
+  .navigation {
+    -webkit-flex-flow: row wrap;
+    flex-flow: row wrap;
+    padding: 0;
+  }
+
+  .navigation a {
+    padding: 1em;
+  }
 }
 
 h1 {
@@ -37,10 +79,10 @@ h2 {
 
 .btn {
   display: inline-block;
-  width: 130px;
-  height: 40px;
-  line-height: 40px;
-  margin: 20px;
+  width: 160px;
+  height: 60px;
+  line-height: 60px;
+  margin: 10px;
   position: relative;
   overflow: hidden;
   border: 2px solid #6BE400;
@@ -53,8 +95,8 @@ h2 {
   position: absolute;
   z-index: -1;
   background: #6BE400;
-  height: 150px;
-  width: 200px;
+  height: 180px;
+  width: 230px;
   border-radius: 50%;
 }
 

@@ -1,38 +1,38 @@
 <link rel="stylesheet" href="/style.css"/>
 <link rel="stylesheet" href="/service-worker/index.css"/>
 
-<header>
-  <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/with-service-worker">With</a></li>
-    <li><a href="/service-worker">Service Worker</a></li>
-  </ul>
-</header>
+<ul class="navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/with-service-worker">With</a></li>
+  <li><a href="/service-worker">Service Worker</a></li>
+</ul>
 
-<h1>Without Service Worker</h1>
+<div class="container">
+  <h1>Without Service Worker</h1>
 
-<div>
-  <span id="previous-page-btn" class="btn">Previous Page</span>
-  <span id="next-page-btn" class="btn">Next Page</span>
+  <div>
+    <span id="previous-page-btn" class="btn">Previous Page</span>
+    <span id="next-page-btn" class="btn">Next Page</span>
+    <br/><br/><br/>
+  </div>
+
+  <div>
+    Page <span id="page-number"></span>
+  </div>
+
+  <br/>
+
+  <div id="time-container">
+    Time to load: <span id="time"></span> ms
+  </div>
   <br/><br/><br/>
+
+  <div id="loading-spinner-container">
+    <img id="loading-spinner" src="/img/loading.gif" alt="loading..."/>
+  </div>
+
+  <div id="display-result"></div>
 </div>
-
-<div>
-  Page <span id="page-number"></span>
-</div>
-
-<br/>
-
-<div id="time-container">
-  Time to load: <span id="time"></span> ms
-</div>
-<br/><br/><br/>
-
-<div id="loading-spinner-container">
-  <img id="loading-spinner" src="/img/loading.gif" alt="loading..."/>
-</div>
-
-<div id="display-result"></div>
 
 <script type="text/javascript" src="/element-library.js"></script>
 <script type="text/javascript" src="/service-worker/without/index.js"></script>

@@ -1,17 +1,17 @@
 <link rel="stylesheet" href="/style.css"/>
 
-<header>
-  <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/without-service-worker">Without Service Worker</a></li>
-    <li><a href="/with-service-worker">With Service Worker</a></li>
-  </ul>
-</header>
+<ul class="navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/without-service-worker">Without Service Worker</a></li>
+  <li><a href="/with-service-worker">With Service Worker</a></li>
+</ul>
 
-<h1>Service Worker</h1>
+<div class="container">
+  <h1>Service Worker</h1>
 
-<div>
-  Background service that handles network requests. Ideal for dealing with offline situations and background syncs or push notifications.<br/>
-  Cannot directly interact with the DOM.<br/>
-  Communication must go through the Service Worker’s postMessage method.
+  <div>
+    Background service that handles network requests. Ideal for dealing with offline situations and background syncs or push notifications.<br/>
+    Cannot directly interact with the DOM.<br/>
+    Communication must go through the Service Worker’s postMessage method.
+  </div>
 </div>

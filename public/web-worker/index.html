@@ -1,18 +1,18 @@
 <link rel="stylesheet" href="/style.css"/>
 
-<header>
-  <ul>
-    <li><a href="/">Home</a></li>
-    <li><a href="/without-web-worker">Without Web Worker</a></li>
-    <li><a href="/with-web-worker">With Web Worker</a></li>
-  </ul>
-</header>
+<ul class="navigation">
+  <li><a href="/">Home</a></li>
+  <li><a href="/without-web-worker">Without Web Worker</a></li>
+  <li><a href="/with-web-worker">With Web Worker</a></li>
+</ul>
 
-<h1>Web Worker</h1>
+<div class="container">
+  <h1>Web Worker</h1>
 
-<div>
-  Mimics multithreading, allowing intensive scripts to be run in the background so they do not block other scripts from running.<br/>
-  Ideal for keeping your UI responsive while also performing processor-intensive functions.<br/>
-  Cannot directly interact with the DOM.<br/>
-  Communication must go through the Web Worker’s postMessage method.
+  <div>
+    Mimics multithreading, allowing intensive scripts to be run in the background so they do not block other scripts from running.<br/>
+    Ideal for keeping your UI responsive while also performing processor-intensive functions.<br/>
+    Cannot directly interact with the DOM.<br/>
+    Communication must go through the Web Worker’s postMessage method.
+  </div>
 </div>
