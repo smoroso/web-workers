@@ -1,26 +1,32 @@
 <link rel="stylesheet" href="/style.css"/>
+<link rel="stylesheet" href="/web-worker/index.css"/>
 
 <header>
   <ul>
     <li><a href="/">Home</a></li>
-    <li><a href="/with-web-worker">With Web Worker</a></li>
+    <li><a href="/with-web-worker">With</a></li>
     <li><a href="/web-worker">Web Worker</a></li>
   </ul>
 </header>
 
-<br/><br/><br/>
-
 <h1>Without Web Worker</h1>
 
-<div>
-  <br/><br/><br/>
+<div class="img-container">
   <img src="/img/kirby_expedition_big.gif" alt="Kirby"/>
-  <br/><br/><br/>
+</div>
+
+<div>
+	<span id="trigger-code" class="btn">Trigger Code</span>
 </div>
 
 <div id="display-result"></div>
 
-<button id="trigger-code" type="button" name="button">Trigger Code</button>
+<br/>
 
+<div id="time-container">
+  Time to calculate: <span id="time"></span> ms
+</div>
+
+<script type="text/javascript" src="/element-library.js"></script>
 <script type="text/javascript" src="/web-worker/async-fn.js"></script>
 <script type="text/javascript" src="/web-worker/without/index.js"></script>

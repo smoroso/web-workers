@@ -33,7 +33,7 @@
   });
 
   app.get("/with-service-worker", (req, res) => {
-    res.sendFile(path.join(__dirname + "/public/service-worker/without/index.html"));
+    res.sendFile(path.join(__dirname + "/public/service-worker/with/index.html"));
   });
 
   const listener = app.listen(8080, () => {

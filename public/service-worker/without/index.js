@@ -1,11 +1,11 @@
 "use strict";
 
-((document, window) => {
+((window, document) => {
   const nextPageBtnEl = document.getElementById("next-page-btn");
   const previousPageBtnEl = document.getElementById("previous-page-btn");
   const pageNumberEl = document.getElementById("page-number");
-  const loadingTimeContainer = document.getElementById("loading-time-container");
-  const loadingTimeEl = document.getElementById("loading-time");
+  const timeContainer = document.getElementById("time-container");
+  const timeEl = document.getElementById("time");
   const loadingSpinnerContainer = document.getElementById("loading-spinner-container");
   const displayResultEl = document.getElementById("display-result");
   const imageBaseUrl = "https://unsplash.it/458/354?image=";
@@ -18,8 +18,8 @@
   nextPageBtnEl.addEventListener("click", async () => {
     pageNumber++;
     pageNumberEl.innerText = pageNumber;
-    enableElIf(previousPageBtnEl, () => pageNumber > minPage);
-    disableElIf(nextPageBtnEl, () => pageNumber === maxPage);
+    turnOnElIf(previousPageBtnEl, () => pageNumber > minPage);
+    turnOffElIf(nextPageBtnEl, () => pageNumber === maxPage);
     emptyEl(displayResultEl);
     return getImages(pageNumber);
   });
@@ -27,8 +27,8 @@
   previousPageBtnEl.addEventListener("click", async () => {
     pageNumber--;
     pageNumberEl.innerText = pageNumber;
-    disableElIf(previousPageBtnEl, () => pageNumber === minPage);
-    enableElIf(nextPageBtnEl, () => pageNumber < maxPage);
+    turnOffElIf(previousPageBtnEl, () => pageNumber === minPage);
+    turnOnElIf(nextPageBtnEl, () => pageNumber < maxPage);
     emptyEl(displayResultEl);
     return getImages(pageNumber);
   });
@@ -36,7 +36,7 @@
   const initialize = async () => {
     pageNumber = 1;
     pageNumberEl.innerText = pageNumber;
-    disableElIf(previousPageBtnEl, () => true);
+    turnOffEl(previousPageBtnEl);
     toggleEl(loadingSpinnerContainer);
     return getImages(pageNumber);
   };
@@ -46,22 +46,19 @@
   const getImages = async (pageNumber) => {
     pageNumberEl.innerHtml = pageNumber;
     emptyEl(displayResultEl);
-    toggleEl(loadingTimeContainer);
+    toggleEl(timeContainer);
     toggleEl(loadingSpinnerContainer);
     const start = window.performance.now();
-    console.time("fetchImages");
     const imagesUrlArray = [...Array(totalImages).keys()].map((i) => {
       const id = (totalImages*(pageNumber-1))+i+1;
       return imageBaseUrl+id;
     });
     const promises = imagesUrlArray.map(fetchImage);
     const objectsUrlArray = await Promise.all(promises);
-    console.timeEnd("fetchImages");
     const end = window.performance.now();
     const time = (end - start).toFixed(2);
-    console.log(time);
-    setInEl(loadingTimeEl, time);
-    toggleEl(loadingTimeContainer);
+    setInEl(timeEl, time);
+    toggleEl(timeContainer);
     toggleEl(loadingSpinnerContainer);
     objectsUrlArray.forEach(renderImage);
   };
@@ -79,4 +76,4 @@
   };
 
   return initialize();
-})(document, window);
+})(window, document);
