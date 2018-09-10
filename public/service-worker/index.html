@@ -12,6 +12,32 @@
   <div>
     Background service that handles network requests. Ideal for dealing with offline situations and background syncs or push notifications.<br/>
     Cannot directly interact with the DOM.<br/>
-    Communication must go through the Service Worker’s postMessage method.
   </div>
+
+  <p>Example taken from <a href="https://www.youtube.com/watch?v=ksXwaWHCW6k" target="_blank">Traversy Media</a></p>
+
+  <h2>Steps</h2>
+
+  <h3>SW Cached Pages:</h3>
+  <ul>
+    <li>Test the "Without Service Worker":
+      <ul>
+        <li>Go to "Without Service Worker"</li>
+        <li>Refresh the page. It should work</li>
+        <li>Go offline (physically or through the dev tool)</li>
+        <li>Refresh the page. It should fail
+      </ul>
+    </li>
+    <li>Test the "With Service Worker":
+      <ul>
+        <li>Go to "With Service Worker"</li>
+        <li>Refresh the page. It should work</li>
+        <li>Go offline (physically or through the dev tool)</li>
+        <li>Refresh the page. It should work
+      </ul>
+    </li>
+  </ul>
+
+  <h3>SW Cached Site:</h3>
+  <p>As long as you visit the page "With Service Worker", the Service Worker should start and therefore going offline and refresh will give you access to all the pages you already visited.</p>
 </div>
